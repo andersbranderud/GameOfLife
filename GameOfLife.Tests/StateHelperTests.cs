@@ -1,6 +1,7 @@
+using GameOfLife.Model;
+using Microsoft.VisualStudio.TestPlatform.Utilities;
 using System;
 using Xunit;
-using GameOfLife.Model;
 
 namespace GameOfLife.Tests
 {
@@ -127,13 +128,11 @@ namespace GameOfLife.Tests
                 { 0, 0, 0, 0, 0 }
             };
 
-            // Output after generation 1
-            /*   0 0 0 0 0
-   1 0 1 0 0
-   0 1 1 0 0
-   0 1 0 0 0
-   0 0 0 0 0*/
-            var expectedStateAfter1 = new int[,]
+            var generation1 = StateHelper.GenerateNewGameOfLifeState(initialState);
+            var generation2 = StateHelper.GenerateNewGameOfLifeState(generation1);
+            var generation3 = StateHelper.GenerateNewGameOfLifeState(generation2);
+
+            int[,] expectedGeneration1 = new int[,]
             {
                 { 0, 0, 0, 0, 0 },
                 { 1, 0, 1, 0, 0 },
@@ -141,23 +140,7 @@ namespace GameOfLife.Tests
                 { 0, 1, 0, 0, 0 },
                 { 0, 0, 0, 0, 0 }
             };
-            var newState = StateHelper.GenerateNewGameOfLifeState(initialState);
-            Assert.Equal(expectedStateAfter1, newState);
-
-            // Output after generation 1
-            var expectedStateAfterGeneration1 = new int[,]
-            {
-                { 0, 0, 0, 0, 0 },
-                { 0, 1, 1, 0, 0 },
-                { 0, 0, 1, 1, 0 },
-                { 0, 1, 1, 0, 0 },
-                { 0, 0, 0, 0, 0 }
-            };
-            newState = StateHelper.GenerateNewGameOfLifeState(newState);
-            Assert.Equal(expectedStateAfterGeneration1, newState);
-
-   
-            var expectedStateAfterGeneration2 = new int[,]
+            int[,] expectedGeneration2 = new int[,]
             {
                 { 0, 0, 0, 0, 0 },
                 { 0, 1, 0, 0, 0 },
@@ -165,9 +148,17 @@ namespace GameOfLife.Tests
                 { 0, 1, 1, 0, 0 },
                 { 0, 0, 0, 0, 0 }
             };
-            newState = StateHelper.GenerateNewGameOfLifeState(newState);
-            Assert.Equal(expectedStateAfterGeneration2, newState);
-
+            int[,] expectedGeneration3 = new int[,]
+            {
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 1, 0, 0 },
+                { 0, 0, 0, 1, 0 },
+                { 0, 1, 1, 1, 0 },
+                { 0, 0, 0, 0, 0 }
+            };
+            Assert.Equal(expectedGeneration1, generation1);
+            Assert.Equal(expectedGeneration2, generation2);
+            Assert.Equal(expectedGeneration3, generation3);
         }
 
     }
