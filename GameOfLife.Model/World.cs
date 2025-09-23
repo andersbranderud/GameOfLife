@@ -4,24 +4,17 @@ namespace GameOfLife.Model
 {
     public class World
     {
+        int[,] currentState = null;
         public World()
-        { }
-
-        // Create world with width and height
-        public World(int width, int height)
-        {
-
-        }
-
-        // Create world with a fixed starting pattern
-        public World(string pattern)
-        {
-
+        { 
+            currentState = MapGenerator.GenerateWorld(10, 10);
         }
 
         // Runs every tick
         public void Render()
         {
+            MapGenerator.PrintOutCurrentState(currentState);
+            currentState = StateHelper.GenerateNewGameOfLifeState(currentState);
             Console.Write("\rRender World!");
         }
     }
