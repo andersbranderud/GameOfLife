@@ -1,3 +1,4 @@
+using GameOfLife.Model.Utility;
 using System;
 using System.Linq;
 
@@ -30,6 +31,11 @@ namespace GameOfLife.Model
         // Create world with a fixed starting pattern
         public static int[,] GenerateWorld(string pattern, int width, int height)
         {
+            if (width <= 0 || height <= 0)
+            {
+                throw new ArgumentException("Width and Height must be greater than zero.");
+            }
+
             int[,] worldArray = new int[width, height];
             int currentIndex = 0;
             
@@ -48,18 +54,13 @@ namespace GameOfLife.Model
                 throw new ArgumentException("Pattern must only contain '0' and '1' characters.");
             }
 
-
-            if (width <= 0 || height <= 0)
-            {
-                throw new ArgumentException("Width and Height must be greater than zero.");
-            }
-
             foreach (var x in Enumerable.Range(0, width))
             {
                 foreach (var y in Enumerable.Range(0, height))
                 {
                     // Randomly assign 0 or 1 to each cell
                     worldArray[x, y] = pattern[currentIndex];
+                    currentIndex++;
                 }
             }
 
@@ -71,13 +72,10 @@ namespace GameOfLife.Model
             var width = currentState.GetLength(0);
             var height = currentState.GetLength(1);
 
-            foreach (var x in Enumerable.Range(0, width))
+            foreach (int x in Enumerable.Range(0, width))
             {
-                foreach (var y in Enumerable.Range(0, height))
-                {
-                    Console.WriteLine($"{currentState[x, y]} ");
-                }
-                Console.WriteLine();
+                int[] allChars = ArrayUtility.GetRow(currentState, x);
+                Console.WriteLine($"{allChars.Select(t => $"{t} ")} ");
             }
         }
     }
