@@ -71,5 +71,35 @@ namespace GameOfLife.Tests
             string validPattern = new string('0', Math.Max(1, width * height));
             Assert.Throws<ArgumentException>(() => MapGenerator.GenerateWorld(validPattern, width, height));
         }
+
+        //Test for GenerateWorldBasedOnPattern
+        [Fact]
+        public void GenerateWorldBasedOnPattern_WithGliderPattern_ReturnsCorrectArray()
+        {
+            int[,] result = MapGenerator.GenerateWorldBasedOnPattern("glider");
+            Assert.Equal(5, result.GetLength(0));
+            Assert.Equal(5, result.GetLength(1));
+        
+            VerifyGrid(result, new int[,]
+            {
+                {'0','1','0','0','0'},
+                {'0','0','1','0','0'},
+                {'1','1','1','0','0'},
+                {'0','0','0','0','0'},
+                {'0','0','0','0','0'}
+            });
+        }
+
+        private void VerifyGrid(int[,] result, int[,] expected)
+        {
+            for (int i = 0; i < expected.GetLength(0); i++)
+            {
+                for (int j = 0; j < expected.GetLength(1); j++)
+                {
+                    Assert.Equal(expected[i, j], result[i, j]);
+                }
+            }
+
+        }
     }
 }
