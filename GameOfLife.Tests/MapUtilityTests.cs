@@ -2,14 +2,14 @@ using GameOfLife.Model;
 
 namespace GameOfLife.Tests
 {
-    public class MapGeneratorTests
+    public class MapUtilityTests
     {
         [Fact]
         public void GenerateWorld_WithValidDimensions_ReturnsCorrectSizeArray()
         {
             int width = 5;
             int height = 3;
-            var result = MapGenerator.GenerateWorld(width, height);
+            var result = MapUtility.GenerateWorld(width, height);
 
             Assert.Equal(width, result.GetLength(0));
             Assert.Equal(height, result.GetLength(1));
@@ -22,7 +22,7 @@ namespace GameOfLife.Tests
         [InlineData(5, -1)]
         public void GenerateWorld_WithInvalidDimensions_ThrowsArgumentException(int width, int height)
         {
-            Assert.Throws<ArgumentException>(() => MapGenerator.GenerateWorld(width, height));
+            Assert.Throws<ArgumentException>(() => MapUtility.GenerateWorld(width, height));
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace GameOfLife.Tests
             int width = 2;
             int height = 2;
             string pattern = "0110";
-            var result = MapGenerator.GenerateWorld(pattern, width, height);
+            var result = MapUtility.GenerateWorld(pattern, width, height);
 
             Assert.Equal(width, result.GetLength(0));
             Assert.Equal(height, result.GetLength(1));
@@ -47,7 +47,7 @@ namespace GameOfLife.Tests
             int width = 2;
             int height = 2;
             string pattern = "01";
-            Assert.Throws<ArgumentException>(() => MapGenerator.GenerateWorld(pattern, width, height));
+            Assert.Throws<ArgumentException>(() => MapUtility.GenerateWorld(pattern, width, height));
         }
 
         [Fact]
@@ -56,7 +56,7 @@ namespace GameOfLife.Tests
             int width = 2;
             int height = 2;
             string pattern = "01a0";
-            Assert.Throws<ArgumentException>(() => MapGenerator.GenerateWorld(pattern, width, height));
+            Assert.Throws<ArgumentException>(() => MapUtility.GenerateWorld(pattern, width, height));
         }
 
         [Theory]
@@ -67,14 +67,14 @@ namespace GameOfLife.Tests
         public void GenerateWorld_WithPatternAndInvalidDimensions_ThrowsArgumentException(int width, int height, string pattern)
         {
             string validPattern = new string('0', Math.Max(1, width * height));
-            Assert.Throws<ArgumentException>(() => MapGenerator.GenerateWorld(validPattern, width, height));
+            Assert.Throws<ArgumentException>(() => MapUtility.GenerateWorld(validPattern, width, height));
         }
 
         //Test for GenerateWorldBasedOnPattern
         [Fact]
         public void GenerateWorldBasedOnPattern_WithGliderPattern_ReturnsCorrectArray()
         {
-            int[,] result = MapGenerator.GenerateWorldBasedOnPattern("glider");
+            int[,] result = MapUtility.GenerateWorldBasedOnPattern("glider");
             Assert.Equal(5, result.GetLength(0));
             Assert.Equal(5, result.GetLength(1));
         

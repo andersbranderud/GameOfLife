@@ -1,8 +1,5 @@
 Game of Life
-
-total 1 hour..
-stat 09.45
-
+total 1h 55 minutes
 
 AI usage:
 Some auto-code gen for input validations

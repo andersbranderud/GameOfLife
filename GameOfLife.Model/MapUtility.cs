@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace GameOfLife.Model
 {
-    public static class MapGenerator
+    public static class MapUtility
     {
         public const string GliderPattern = "glider";
 

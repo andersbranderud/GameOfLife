@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace GameOfLife.Model
 {
-    internal static class StateHelper
+    internal static class StateUtility
     {
         private const int AliveCell = 1;
         private const int DeadCell = 0;
