@@ -104,6 +104,7 @@ namespace GameOfLife.Model
             {
                 int[] allChars = ArrayUtility.GetRow(currentState, x);
                 string rowString = string.Join(" ", allChars);
+                rowString = rowString.Replace('0', ' ');
                 Console.WriteLine($"{rowString}");
             }
         }

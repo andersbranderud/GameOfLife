@@ -34,7 +34,7 @@ namespace GameOfLife.ConsoleApp
             }
 
             // Optional: prompt for initial pattern
-            Console.Write("Enter initial pattern (optional, press Enter to skip). Example valid input: 0110 (for 2x2 grid); glider (uses 5x5 grid) ");
+            Console.Write("Enter initial pattern (optional, press Enter to skip). Example valid input: 0110 (for 2x2 grid); glider (uses 5x5 grid) \n");
             string pattern = Console.ReadLine();
 
             world.InitWorld(width, length, pattern);
@@ -45,10 +45,11 @@ namespace GameOfLife.ConsoleApp
             Console.WriteLine("Press Ctrl+C to exit.");
 
             while (_run)
-            { 
-                world.Render();
+            {
+                Console.Clear();
+                world.Render();                
                 Console.Write($"\nCurrent state {currentStateNr}\n\n");
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
                 tickCount++;
                 currentStateNr++;
             }

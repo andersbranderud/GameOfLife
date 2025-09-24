@@ -89,7 +89,8 @@ namespace Pacman.Model
                 }
                 else
                 {
-                    Console.Write($"Congratulations! You completed map nr. {_currentMapNr} out of {TotalNrOfMaps}! Loading next map.");
+                    Console.Write($"Congratulations! You completed map nr. {_currentMapNr} out of {TotalNrOfMaps}! Press a key to load next map.");
+                    Console.ReadKey();
                     _currentMap = null;
                     _currentMapNr++;
                     InitGame();

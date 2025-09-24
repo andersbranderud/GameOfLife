@@ -5,8 +5,8 @@ namespace GameOfLife.Model
 {
     internal static class StateHelper
     {
-        private const int AliveCell = 1;
-        private const int DeadCell = 0;
+        public const int AliveCell = 1;
+        public const int DeadCell = 0;
 
         /// <summary>
         /// Takes a state in game of life; calculates the next state and returns it.

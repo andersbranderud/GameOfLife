@@ -11,7 +11,13 @@ namespace Pacman.ConsoleApp
         static void Main(string[] args)
         {
             var game = new Game();
-            Console.WriteLine("Hello and welcome to Pacman!");
+            Console.WriteLine("Hello and welcome to Pacman!\n");
+            Console.WriteLine("Use the arrow keys to control the direction that Pacman is moving. " +
+                "You can press several consecutive keys, and they will be put in a queue and ran in order. Any potential direction change takes place at the next tick.\n");
+
+            // Wait
+            Console.WriteLine("Press a key to start the game.");
+            Console.ReadKey();
 
             Console.CancelKeyPress += (sender, args) =>
             {
@@ -43,7 +49,7 @@ namespace Pacman.ConsoleApp
                     game.CheckUserInputAndUpdateDirection(keyInfo.Key);
                 }
 
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 tickCount++;
                 currentStateNr++;
             }
