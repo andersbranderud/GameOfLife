@@ -11,6 +11,7 @@ namespace Pacman.Model.Tests
         private const char PacmanDown = '^';
         private const char PacmanLeft = '>';
         private const char PacmanRight = '<';
+        private const char PacmanNone = 'O';
 
         private static char[,] CreateGrid(int rows, int cols, char fill)
         {
@@ -89,7 +90,7 @@ namespace Pacman.Model.Tests
         [InlineData(DirectionEnum.Down, PacmanDown)]
         [InlineData(DirectionEnum.Left, PacmanLeft)]
         [InlineData(DirectionEnum.Right, PacmanRight)]
-        [InlineData(DirectionEnum.None, PacmanRight)]
+        [InlineData(DirectionEnum.None, PacmanNone)]
         public void RedrawMapForNewPacmanPosition_SetsCorrectPacmanSymbol(DirectionEnum direction, char expectedSymbol)
         {
             var grid = CreateGrid(2, 2, Fruit);

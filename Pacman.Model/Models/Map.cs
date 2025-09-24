@@ -77,7 +77,7 @@ namespace Pacman.Model.Models
                 case DirectionEnum.Right:
                     return SymbolConstants.PacmanRight;
                 default:
-                    return SymbolConstants.PacmanRight; // Default to right if no direction is set
+                    return SymbolConstants.PacmanNone; 
             }
         }
 
