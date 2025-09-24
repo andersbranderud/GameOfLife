@@ -1,5 +1,4 @@
 using Pacman.Model.Enums;
-using Pacman.Model;
 using Pacman.Model.Models;
 
 namespace Pacman.Model.Tests

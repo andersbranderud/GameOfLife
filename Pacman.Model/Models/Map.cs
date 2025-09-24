@@ -1,5 +1,4 @@
 ﻿using Pacman.Model.Enums;
-using System;
 using System.Collections.Generic;
 
 namespace Pacman.Model.Models

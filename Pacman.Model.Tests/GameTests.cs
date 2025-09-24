@@ -1,8 +1,3 @@
-using Pacman.Model;
-using Pacman.Model.Models;
-using System;
-using Xunit;
-
 namespace Pacman.Model.Tests
 {
     public class GameTests
@@ -30,7 +25,8 @@ namespace Pacman.Model.Tests
         public void Constructor_WithValidWorld_InitializesMap()
         {
             // Arrange
-            string world = new string('.', 25); // 5 rows, 5 columns
+            string world = new string('.', 24) + 'P'; // 5 rows, 5 columns
+
             var game = new Game(world);
 
             // Act

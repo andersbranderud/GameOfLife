@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Pacman.Model
+﻿namespace Pacman.Model
 {
 	public static class SymbolConstants
 	{

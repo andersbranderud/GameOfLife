@@ -1,9 +1,5 @@
 using Pacman.Model.Enums;
 using Pacman.Model.Models;
-using Pacman.Model;
-using System;
-using System.Collections.Generic;
-using Xunit;
 using System.Collections;
 
 namespace Pacman.Model.Tests
