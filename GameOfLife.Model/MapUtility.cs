@@ -7,6 +7,9 @@ namespace GameOfLife.Model
     public static class MapUtility
     {
         public const string GliderPattern = "glider";
+        public const string GliderPatternString = "0100000100111000000000000";
+        public const int PatternWidthDefault = 5;
+        public const int PatternHeightDefault = 5;
 
         // Return a 2D array of ints representing the world
         public static int[,] GenerateWorld(int width, int height)
@@ -22,12 +25,16 @@ namespace GameOfLife.Model
             {
                 foreach (var y in Enumerable.Range(0, height))
                 {
-                    // Randomly assign 0 or 1 to each cell
-                    worldArray[x, y] = new Random().Next(2);
+                    AssignDeadOrAliveStateRandomly(worldArray, x, y);
                 }
             }
 
             return worldArray;
+        }
+
+        private static void AssignDeadOrAliveStateRandomly(int[,] worldArray, int x, int y)
+        {
+            worldArray[x, y] = new Random().Next(2);
         }
 
         // Create world with a given input grid
@@ -60,7 +67,6 @@ namespace GameOfLife.Model
             {
                 foreach (var y in Enumerable.Range(0, height))
                 {
-                    // Randomly assign 0 or 1 to each cell
                     int currentValue = (int)char.GetNumericValue(inputGrid[currentIndex]);
                     worldArray[x, y] = currentValue;
                     currentIndex++;
@@ -78,13 +84,9 @@ namespace GameOfLife.Model
         /// <exception cref="ArgumentException"></exception>
         public static int[,] GenerateWorldBasedOnPattern(string pattern)
         {
-            int width = 5;
-            int height = 5;
-
             if (pattern == GliderPattern)
             {
-                string gridArray = "0100000100111000000000000";
-                return GenerateWorld(gridArray, width, height);                                                                            
+                return GenerateWorld(GliderPatternString, PatternWidthDefault, PatternHeightDefault);                                                                            
             }
             else
             {
