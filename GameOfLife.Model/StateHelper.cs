@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace GameOfLife.Model
 {
-    internal static class StateUtility
+    internal static class StateHelper
     {
         private const int AliveCell = 1;
         private const int DeadCell = 0;
@@ -82,13 +82,18 @@ namespace GameOfLife.Model
                 }
             }
             // 3 neighbours => dead cell becomes alive.
-            else
+            else if (currentState == DeadCell)
             {
                 if (nrOfAliveNeighbours == 3)
                 {
                     return AliveCell;
                 }
             }
+            else
+            {
+                throw new System.Exception($"Invalid cell state {currentState}. Cell state must be either {AliveCell} or {DeadCell}.");
+            }
+
             return DeadCell;
         }
     }

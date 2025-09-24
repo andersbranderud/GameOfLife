@@ -28,7 +28,7 @@
         public void Render()
         {
             MapUtility.PrintOutCurrentState(currentState);
-            currentState = StateUtility.GenerateNewGameOfLifeState(currentState);
+            currentState = StateHelper.GenerateNewGameOfLifeState(currentState);
         }
     }
 }
