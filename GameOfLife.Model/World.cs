@@ -10,12 +10,28 @@ namespace GameOfLife.Model
             currentState = MapGenerator.GenerateWorld(10, 10);
         }
 
+        public void InitWorld(int width, int length, string gridArray = "")
+        {
+            if (gridArray == MapGenerator.GliderPattern)
+            {
+                currentState = MapGenerator.GenerateWorldBasedOnPattern(gridArray);
+            }
+            else if (!string.IsNullOrEmpty(gridArray))
+            {
+                currentState = MapGenerator.GenerateWorld(gridArray, width, length);
+            }
+            
+            else
+            {
+                currentState = MapGenerator.GenerateWorld(width, length);
+            }
+        }
+
         // Runs every tick
         public void Render()
         {
             MapGenerator.PrintOutCurrentState(currentState);
             currentState = StateHelper.GenerateNewGameOfLifeState(currentState);
-            Console.Write("\rRender World!");
         }
     }
 }

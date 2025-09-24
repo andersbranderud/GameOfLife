@@ -18,14 +18,39 @@ namespace GameOfLife.ConsoleApp
                 Console.WriteLine("\nExit");
             };
 
+            // Prompt for world dimensions
+            Console.Write("Enter width: ");
+            if (!int.TryParse(Console.ReadLine(), out int width) || width <= 0)
+            {
+                Console.WriteLine("Invalid width. Exiting.");
+                return;
+            }
+
+            Console.Write("Enter length: ");
+            if (!int.TryParse(Console.ReadLine(), out int length) || length <= 0)
+            {
+                Console.WriteLine("Invalid length. Exiting.");
+                return;
+            }
+
+            // Optional: prompt for initial pattern
+            Console.Write("Enter initial pattern (optional, press Enter to skip): ");
+            string pattern = Console.ReadLine();
+
+            world.InitWorld(width, length, pattern);
+
             var tickCount = 1;
+            var currentStateNr = 1;
+
+            Console.WriteLine("Press Ctrl+C to exit.");
 
             while (_run)
             { 
                 world.Render();
-                Console.Write($" {tickCount}");
+                Console.Write($"\nCurrent state {currentStateNr}\n\n");
                 Thread.Sleep(500);
                 tickCount++;
+                currentStateNr++;
             }
         }
     }

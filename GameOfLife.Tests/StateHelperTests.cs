@@ -230,5 +230,36 @@ namespace GameOfLife.Tests
             Assert.Equal(expectedGeneration9, generation9);
             Assert.Equal(expectedGeneration10, generation10);
         }
+
+        [Fact]
+        public void GenerateWorldBasedOnPattern_WithGliderPattern_StabilizesAfter11Generations()
+        {
+            int[,] result = MapGenerator.GenerateWorldBasedOnPattern("glider");
+
+            var generation1 = StateHelper.GenerateNewGameOfLifeState(result); // Generation 1
+            var generation2 = StateHelper.GenerateNewGameOfLifeState(generation1); // Generation 2
+            var generation3 = StateHelper.GenerateNewGameOfLifeState(generation2); // Generation 3
+            var generation4 = StateHelper.GenerateNewGameOfLifeState(generation3); // Generation 4
+            var generation5 = StateHelper.GenerateNewGameOfLifeState(generation4); // Generation 5
+            var generation6 = StateHelper.GenerateNewGameOfLifeState(generation5); // Generation 6
+            var generation7 = StateHelper.GenerateNewGameOfLifeState(generation6); // Generation 7
+            var generation8 = StateHelper.GenerateNewGameOfLifeState(generation7); // Generation 8
+            var generation9 = StateHelper.GenerateNewGameOfLifeState(generation8); // Generation 9
+            var generation10 = StateHelper.GenerateNewGameOfLifeState(generation9); // Generation 10
+            var generation11 = StateHelper.GenerateNewGameOfLifeState(generation10); // Generation 11
+            var generation12 = StateHelper.GenerateNewGameOfLifeState(generation11); // Generation 12
+
+            int[,] stabilizedExpectedGeneration = new int[,]
+            {
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 1, 1 },
+                { 0, 0, 0, 1, 1 }
+            };
+
+            Assert.Equal(generation11, generation12);
+            Assert.Equal(stabilizedExpectedGeneration, generation11);
+        }
     }
 }

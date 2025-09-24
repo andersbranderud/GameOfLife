@@ -6,6 +6,8 @@ namespace GameOfLife.Model
 {
     public static class MapGenerator
     {
+        public const string GliderPattern = "glider";
+
         // Return a 2D array of ints representing the world
         public static int[,] GenerateWorld(int width, int height)
         {
@@ -59,7 +61,8 @@ namespace GameOfLife.Model
                 foreach (var y in Enumerable.Range(0, height))
                 {
                     // Randomly assign 0 or 1 to each cell
-                    worldArray[x, y] = inputGrid[currentIndex];
+                    int currentValue = (int)char.GetNumericValue(inputGrid[currentIndex]);
+                    worldArray[x, y] = currentValue;
                     currentIndex++;
                 }
             }
@@ -72,7 +75,7 @@ namespace GameOfLife.Model
             int width = 5;
             int height = 5;
 
-            if (pattern == "glider")
+            if (pattern == GliderPattern)
             {
                 string gridArray = "0100000100111000000000000";
                 return GenerateWorld(gridArray, width, height);                                                                            
@@ -84,17 +87,16 @@ namespace GameOfLife.Model
 
         }
 
-
-
         internal static void PrintOutCurrentState(int[,] currentState)
         {
             var width = currentState.GetLength(0);
             var height = currentState.GetLength(1);
-
+            
             foreach (int x in Enumerable.Range(0, width))
             {
                 int[] allChars = ArrayUtility.GetRow(currentState, x);
-                Console.WriteLine($"{allChars.Select(t => $"{t} ")} ");
+                string rowString = string.Join(" ", allChars);
+                Console.WriteLine($"{rowString}");
             }
         }
     }
