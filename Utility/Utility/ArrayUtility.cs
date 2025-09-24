@@ -1,7 +1,6 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
-namespace GameOfLife.Model.Utility
+namespace Utility.Utility
 {
     public static class ArrayUtility
     {
@@ -28,6 +27,23 @@ namespace GameOfLife.Model.Utility
             Buffer.BlockCopy(array, row * cols * size, result, 0, cols * size);
 
             return result;
+        }
+
+        public static char[,] ReadStringIntoCharArray(string inputGrid, int width, int height)
+        {
+            var array = new char[width, height];
+            int currentIndex = 0;
+
+            foreach (var x in Enumerable.Range(0, width))
+            {
+                foreach (var y in Enumerable.Range(0, height))
+                {
+                    char currentValue = inputGrid[currentIndex];
+                    array[x, y] = currentValue;
+                    currentIndex++;
+                }
+            }
+            return array;
         }
     }
 }

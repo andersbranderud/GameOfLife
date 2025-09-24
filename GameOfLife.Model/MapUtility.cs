@@ -1,6 +1,6 @@
-using GameOfLife.Model.Utility;
 using System;
 using System.Linq;
+using Utility.Utility;
 
 namespace GameOfLife.Model
 {

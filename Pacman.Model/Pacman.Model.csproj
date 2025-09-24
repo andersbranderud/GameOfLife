@@ -23,6 +23,9 @@
 	 <InternalsVisibleTo Include="Pacman.ConsoleApp" />
 	<InternalsVisibleTo Include="Pacman.Tests" />
    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utility\Utility.csproj" />
+  </ItemGroup>
 
 
 </Project>

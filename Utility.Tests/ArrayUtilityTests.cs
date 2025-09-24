@@ -1,6 +1,6 @@
 ﻿using System;
 using Xunit;
-using GameOfLife.Model.Utility;
+using Utility.Utility;
 
 namespace GameOfLife.Tests
 {

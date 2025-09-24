@@ -1,9 +1,9 @@
-﻿using GameOfLife.Model.Utility;
-using Pacman.Model.Models;
+﻿using Pacman.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Utility.Utility;
 
 namespace Pacman.Model
 {
@@ -14,9 +14,9 @@ namespace Pacman.Model
         {
             string filePath = $"{MapFolder}/{mapNr}.txt";
 
-            if (!System.IO.File.Exists(filePath))
+            if (!File.Exists(filePath))
             {
-                throw new System.IO.FileNotFoundException($"The map file '{filePath}' was not found.");
+                throw new FileNotFoundException($"The map file '{filePath}' was not found.");
             }
 
             var rowCount = 0;
@@ -25,7 +25,8 @@ namespace Pacman.Model
             using (StreamReader reader = File.OpenText(filePath))
             {
                 var lines = new List<string>();
-                string? line;
+                string line;
+                
                 while ((line = reader.ReadLine()) != null)
                 {
                     lines.Add(line);
