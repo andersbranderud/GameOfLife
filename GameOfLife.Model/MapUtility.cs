@@ -70,6 +70,12 @@ namespace GameOfLife.Model
             return worldArray;
         }
 
+        /// <summary>
+        /// Generates an initial state based on a pattern and returns it.
+        /// </summary>
+        /// <param name="pattern">Currently supported patterns: glider</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public static int[,] GenerateWorldBasedOnPattern(string pattern)
         {
             int width = 5;

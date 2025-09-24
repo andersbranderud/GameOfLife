@@ -8,6 +8,11 @@ namespace GameOfLife.Model
         private const int AliveCell = 1;
         private const int DeadCell = 0;
 
+        /// <summary>
+        /// Takes a state in game of life; calculates the next state and returns it.
+        /// </summary>
+        /// <param name="currentState">Current state in game of life.</param>
+        /// <returns>New state in game of life.</returns>
         public static int[,] GenerateNewGameOfLifeState(int[,] currentState)
         {
             var nrOfRows = currentState.GetLength(0);
