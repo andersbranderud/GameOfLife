@@ -40,7 +40,6 @@ namespace GameOfLife.Model.Utility
             {
                 foreach (var y in Enumerable.Range(0, height))
                 {
-                    // Randomly assign 0 or 1 to each cell
                     char currentValue = inputGrid[currentIndex];
                     array[x, y] = currentValue;
                     currentIndex++;

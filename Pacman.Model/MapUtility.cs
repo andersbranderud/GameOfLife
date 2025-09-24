@@ -105,7 +105,7 @@ namespace Pacman.Model
             var width = currentMap.GetLength(0);
             var height = currentMap.GetLength(1);
 
-            foreach (int x in Enumerable.Range(0, width))
+            foreach (int x in Enumerable.Range(0, height))
             {
                 char[] allChars = ArrayUtility.GetRow<char>(currentMap, x);
                 string rowString = string.Join(" ", allChars);
