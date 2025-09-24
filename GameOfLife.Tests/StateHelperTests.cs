@@ -131,6 +131,13 @@ namespace GameOfLife.Tests
             var generation1 = StateHelper.GenerateNewGameOfLifeState(initialState);
             var generation2 = StateHelper.GenerateNewGameOfLifeState(generation1);
             var generation3 = StateHelper.GenerateNewGameOfLifeState(generation2);
+            var generation4 = StateHelper.GenerateNewGameOfLifeState(generation3);
+            var generation5 = StateHelper.GenerateNewGameOfLifeState(generation4);
+            var generation6 = StateHelper.GenerateNewGameOfLifeState(generation5);
+            var generation7 = StateHelper.GenerateNewGameOfLifeState(generation6);
+            var generation8 = StateHelper.GenerateNewGameOfLifeState(generation7);
+            var generation9 = StateHelper.GenerateNewGameOfLifeState(generation8);
+            var generation10 = StateHelper.GenerateNewGameOfLifeState(generation9);
 
             int[,] expectedGeneration1 = new int[,]
             {
@@ -143,12 +150,20 @@ namespace GameOfLife.Tests
             int[,] expectedGeneration2 = new int[,]
             {
                 { 0, 0, 0, 0, 0 },
+                { 0, 0, 1, 0, 0 },
+                { 1, 0, 1, 0, 0 },
+                { 0, 1, 1, 0, 0 },
+                { 0, 0, 0, 0, 0 }
+            };
+            int[,] expectedGeneration3 = new int[,]
+            {
+                { 0, 0, 0, 0, 0 },
                 { 0, 1, 0, 0, 0 },
                 { 0, 0, 1, 1, 0 },
                 { 0, 1, 1, 0, 0 },
                 { 0, 0, 0, 0, 0 }
             };
-            int[,] expectedGeneration3 = new int[,]
+            int[,] expectedGeneration4 = new int[,]
             {
                 { 0, 0, 0, 0, 0 },
                 { 0, 0, 1, 0, 0 },
@@ -156,10 +171,64 @@ namespace GameOfLife.Tests
                 { 0, 1, 1, 1, 0 },
                 { 0, 0, 0, 0, 0 }
             };
+            int[,] expectedGeneration5 = new int[,]
+            {
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 },
+                { 0, 1, 0, 1, 0 },
+                { 0, 0, 1, 1, 0 },
+                { 0, 0, 1, 0, 0 }
+            };
+            int[,] expectedGeneration6 = new int[,]
+            {
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 1, 0 },
+                { 0, 1, 0, 1, 0 },
+                { 0, 0, 1, 1, 0 }
+            };
+            int[,] expectedGeneration7 = new int[,]
+            {
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 1, 0, 0 },
+                { 0, 0, 0, 1, 1 },
+                { 0, 0, 1, 1, 0 }
+            };
+            int[,] expectedGeneration8 = new int[,]
+            {
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 1, 0 },
+                { 0, 0, 0, 0, 1 },
+                { 0, 0, 1, 1, 1 }
+            };
+            int[,] expectedGeneration9 = new int[,]
+            {
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 1, 0, 1 },
+                { 0, 0, 0, 1, 1 }
+            };
+            int[,] expectedGeneration10 = new int[,]
+            {
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 1 },
+                { 0, 0, 0, 1, 1 }
+            };
             Assert.Equal(expectedGeneration1, generation1);
             Assert.Equal(expectedGeneration2, generation2);
             Assert.Equal(expectedGeneration3, generation3);
+            Assert.Equal(expectedGeneration4, generation4);
+            Assert.Equal(expectedGeneration5, generation5);
+            Assert.Equal(expectedGeneration6, generation6);
+            Assert.Equal(expectedGeneration7, generation7);
+            Assert.Equal(expectedGeneration8, generation8);
+            Assert.Equal(expectedGeneration9, generation9);
+            Assert.Equal(expectedGeneration10, generation10);
         }
-
     }
-}   
+}

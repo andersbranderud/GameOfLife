@@ -1,10 +1,10 @@
 Game of Life
 
-start 14.25.to 15.05.. 30 minuter.
-21.12
+total 1 hour..
+stat 09.45
 
 
 AI usage:
 Some auto-code gen for input validations
-Unit tests
+Unit tests several
 GetValuesOfNeighbours -- to autofill 8 directions based on my first example.
