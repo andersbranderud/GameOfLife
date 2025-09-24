@@ -34,7 +34,7 @@ namespace GameOfLife.ConsoleApp
             }
 
             // Optional: prompt for initial pattern
-            Console.Write("Enter initial pattern (optional, press Enter to skip): ");
+            Console.Write("Enter initial pattern (optional, press Enter to skip). Example valid input: 0110 (for 2x2 grid); glider (uses 5x5 grid) ");
             string pattern = Console.ReadLine();
 
             world.InitWorld(width, length, pattern);
