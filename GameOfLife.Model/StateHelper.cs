@@ -7,6 +7,7 @@ namespace GameOfLife.Model
     {
         private const int AliveCell = 1;
         private const int DeadCell = 0;
+
         public static int[,] GenerateNewGameOfLifeState(int[,] currentState)
         {
             var nrOfRows = currentState.GetLength(0);
@@ -27,6 +28,13 @@ namespace GameOfLife.Model
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="currentState">The map of all states.</param>
+        /// <param name="currentRow"></param>
+        /// <param name="currentColumn"></param>
+        /// <returns></returns>
         private static int[] GetValuesOfNeighbours(int[,] currentState, int currentRow, int currentColumn)
         {
             List<int> allNeighbours = new List<int>();
@@ -54,10 +62,16 @@ namespace GameOfLife.Model
         }
 
 
-        // Alive cell – Fewer than 2 alive neighbours – dies(underpopulation).
-        // Alive cell – 2 or 3 neighbours – continues to live(perfect situation).
-        // Alive cell – More than 3 alive neighbours – dies(overpopulation).
-        // Dead cell – Exactly three alive neighbours – becomes alive(reproduction).
+        /// <summary>
+        /// Alive cell – Fewer than 2 alive neighbours – dies(underpopulation).
+        ///  Alive cell – 2 or 3 neighbours – continues to live(perfect situation).
+        ///  Alive cell – More than 3 alive neighbours – dies(overpopulation).
+        ///  Dead cell – Exactly three alive neighbours – becomes alive(reproduction).
+        /// </summary>
+        /// <param name="allNeighbours">All neighbours value of the cell, either 0 Dead or 1 Alive.</param>
+        /// <param name="currentState">State of the current cell.</param>
+        /// <returns>The new state of the cell.</returns>
+        /// <exception cref="System.Exception"></exception>
         private static int GetNewStateOfCell(int[] allNeighbours, int currentState)
         {
             var nrOfAliveNeighbours = allNeighbours.Count(n => n == AliveCell);
