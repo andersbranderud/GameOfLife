@@ -12,6 +12,8 @@ namespace Pacman.Model
 
 		public const char Wall = '|';
 		public const char Fruit = '.';
-		public const char EatenFruit = 'x'
+		public const char EatenFruit = 'x';
+
+		public const char EmptySpace = ' ';
 	}
 }

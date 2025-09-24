@@ -1,10 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 	<ItemGroup>
-		<InternalsVisibleTo Include="GameOfLife.Tests"/>
+		<InternalsVisibleTo Include="GameOfLife.Tests" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Utility\Utility.csproj" />
 	</ItemGroup>
 
 </Project>

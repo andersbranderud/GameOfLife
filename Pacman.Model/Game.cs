@@ -7,6 +7,7 @@ namespace Pacman.Model
     {
         Map _currentMap = null;
         int currentMapNr = 1;
+        int DefaultNrOfRows = 5;
 
         private PacmanPlayer pacman;
         // Create game
@@ -17,7 +18,13 @@ namespace Pacman.Model
         // Create game with a fixed starting pattern
         public Game(string world)
         {
-            _currentMap = MapUtility.ReadStringIntoMap(world);
+            if (string.IsNullOrEmpty(world))
+            {
+                throw new ArgumentNullException("World must contain values");
+            }
+
+            var nrOfColumns = world.Length / DefaultNrOfRows;
+            _currentMap = MapUtility.ReadStringIntoMap(world, DefaultNrOfRows, nrOfColumns, currentMapNr);
         }
 
         public void InitGame()
@@ -37,7 +44,7 @@ namespace Pacman.Model
             {
                 throw new InvalidOperationException("Game not initialized. Call InitGame() before Render().");
             }
-            var (currentX, currentY) = pacman.CurrentPosition;
+            var (currentX, currentY) = (pacman.CurrentPositionX, pacman.CurrentPositionY);
             var currentDirection = pacman.CurrentDirection;
             var desiredDirection = pacman.DesiredDirection;
 
@@ -46,10 +53,19 @@ namespace Pacman.Model
             {
                 pacman.CurrentDirection = desiredDirection;
             }
-            
-            // Calculate new position based on current direction
-            int newX = currentX;
-            int newY = currentY;            
+
+            pacman.SetLastPosition(currentX, currentY);
+            (int x, int y) newPosition = _currentMap.GetNewPosition(pacman);
+            pacman.SetCurrentPosition(newPosition.x, newPosition.y);
+            _currentMap.RedrawMapForNewPacmanPosition(pacman);
+            MapUtility.PrintOutMap(_currentMap);
+
+            var isMapComplete = _currentMap.IsRemainingDots();
+
+            if (isMapComplete)
+            {
+                Console.Write("Congratulations! You completed this map!");
+            }
         }
 
         public void CheckUserInputAndUpdateDirection(ConsoleKey key)

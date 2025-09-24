@@ -24,6 +24,8 @@ namespace Pacman.ConsoleApp
 
             Console.WriteLine("Press Ctrl+C to exit.");
 
+            game.InitGame();
+
             while (_run)
             {
                 game.Render();
@@ -40,8 +42,6 @@ namespace Pacman.ConsoleApp
                 tickCount++;
                 currentStateNr++;
             }
-
-
         }
     }
 }

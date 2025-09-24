@@ -7,6 +7,16 @@ namespace Pacman.Model.Models
         private int _currentPositionX;
         private int _currentPositionY;
 
+        private int _lastPositionX; 
+        private int _lastPositionY;
+
+
+        // Getters for position fields
+        public int CurrentPositionX => _currentPositionX;
+        public int CurrentPositionY => _currentPositionY;
+        public int LastPositionX => _lastPositionX;
+        public int LastPositionY => _lastPositionY;
+
         public DirectionEnum CurrentDirection { get; set; } = DirectionEnum.None;
 
         // property for desired direction, updates when a key is pressed
@@ -17,14 +27,17 @@ namespace Pacman.Model.Models
             _currentPositionY = initialPositionY;
         }
 
-        public (int X, int Y) CurrentPosition
+        // Last Position set x and y
+        public void SetLastPosition(int lastPositionX, int lastPositionY)
         {
-            get => (_currentPositionX, _currentPositionY);
-            set
-            {
-                _currentPositionX = value.X;
-                _currentPositionY = value.Y;
-            }
+            _lastPositionX = lastPositionX;
+            _lastPositionY = lastPositionY;
+        }
+
+        public void SetCurrentPosition(int currentPositionX, int currentPositionY)
+        {
+            _currentPositionX = currentPositionX;
+            _currentPositionY = currentPositionY;
         }
     }
 }

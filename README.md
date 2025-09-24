@@ -8,7 +8,8 @@ GetValuesOfNeighbours -- to autofill 8 directions based on my first example.
 
 
 Pacman
-11.14 to 11.50 = 36 minutes
-now 11.55.
+1h 10min total
+kl 12.40
+1h 40min total..
 AI
 MapUtility read from file.
