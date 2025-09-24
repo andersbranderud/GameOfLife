@@ -15,8 +15,6 @@ namespace Pacman.Model.Models
         private readonly int _nrOfRows;
         private HashSet<(int, int)> _wallPositions = new HashSet<(int, int)>();
 
-        private int _remainingDots;
-
         // Getters for all private properties
         public int InitialDots => _initialDots;
         public int RemainingDots {private set; get; }
@@ -35,7 +33,7 @@ namespace Pacman.Model.Models
             this._nrOfRows = rowCount;
             this._nrOfColumns = colCount;
             this._initialDots = initialDots;
-            this._remainingDots = initialDots;
+            RemainingDots = initialDots;
             _grid = grid;
             _wallPositions = wallPositions;
             _mapNr = mapNr;
@@ -61,7 +59,7 @@ namespace Pacman.Model.Models
             // New position has pacman depending on direction.
             _grid[newY, newX] = GetSymbolForCurrentDirection(pacman);
 
-            if (currentSymbol ==  SymbolConstants.EatenFruit)
+            if (currentSymbol ==  SymbolConstants.Fruit)
             {
                 RemainingDots--;
             }            
@@ -114,9 +112,9 @@ namespace Pacman.Model.Models
             return (currentX, currentY); 
         }
 
-        internal bool IsRemainingDots()
+        internal bool HasRemainingDots()
         {
-            return RemainingDots == 0;
+            return RemainingDots != 0;
         }
     }
 }

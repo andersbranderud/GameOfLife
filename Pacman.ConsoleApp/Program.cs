@@ -28,8 +28,13 @@ namespace Pacman.ConsoleApp
 
             while (_run)
             {
-                game.Render();
-                Console.Write($"\nCurrent state {currentStateNr}\n\n");
+                Console.Clear();
+                bool isComplete = game.Render();
+                
+                if (isComplete)
+                {
+                    break;
+                }
 
                 // Non-blocking keyboard event listener
                 if (Console.KeyAvailable)
@@ -38,7 +43,7 @@ namespace Pacman.ConsoleApp
                     game.CheckUserInputAndUpdateDirection(keyInfo.Key);
                 }
 
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
                 tickCount++;
                 currentStateNr++;
             }
