@@ -1,7 +1,4 @@
 using GameOfLife.Model;
-using Microsoft.VisualStudio.TestPlatform.Utilities;
-using System;
-using Xunit;
 
 namespace GameOfLife.Tests
 {
