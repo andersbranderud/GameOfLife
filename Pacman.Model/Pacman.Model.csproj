@@ -4,4 +4,11 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Maps\" />
+  </ItemGroup>
+	 <ItemGroup>
+		 <InternalsVisibleTo Include="Pacman.Tests, Pacman.ConsoleApp"/>
+	 </ItemGroup>
+
 </Project>
