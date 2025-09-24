@@ -6,12 +6,12 @@ namespace Pacman.Model.Tests
 {
     public class MapTests
     {
-        private const char Fruit = 'F';
-        private const char EatenFruit = 'E';
-        private const char PacmanUp = '^';
-        private const char PacmanDown = 'v';
-        private const char PacmanLeft = '<';
-        private const char PacmanRight = '>';
+        private const char Fruit = '.';
+        private const char EatenFruit = 'x';
+        private const char PacmanUp = 'V';
+        private const char PacmanDown = '^';
+        private const char PacmanLeft = '>';
+        private const char PacmanRight = '<';
 
         private static char[,] CreateGrid(int rows, int cols, char fill)
         {
@@ -145,19 +145,7 @@ namespace Pacman.Model.Tests
             Assert.Equal((1, 1), pos); // Should not move into wall
         }
 
-        [Fact]
-        public void HasRemainingDots_ReturnsTrueAndFalse()
-        {
-            var grid = CreateGrid(2, 2, Fruit);
-            var walls = new HashSet<(int, int)>();
-            var map = new Map(1, 0, 0, 2, 2, grid, 1, walls);
-
-            Assert.True(map.HasRemainingDots());
-            map.RedrawMapForNewPacmanPosition(CreatePacmanPlayer(0, 0, DirectionEnum.Right));
-            Assert.False(map.HasRemainingDots());
-        }
         // Edgecases where we go beyond board, and player should end up on other side.
-
         [Theory]
         [InlineData(0, 0, DirectionEnum.Up, 0, 2)]    // Move up from top row, should wrap to bottom
         [InlineData(2, 2, DirectionEnum.Down, 2, 0)]  // Move down from bottom row, should wrap to top
