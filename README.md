@@ -8,6 +8,6 @@ GetValuesOfNeighbours -- to autofill 8 directions based on my first example.
 
 
 Pacman
-1h 50min total..
-AI
-MapUtility read from file.
+2h
+AI: MapUtility read from file;Tests; auto complete of e.g. CheckUserInputAndUpdateDirection
+14.16

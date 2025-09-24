@@ -1,4 +1,5 @@
 ﻿using Pacman.Model.Enums;
+using System.Collections;
 
 namespace Pacman.Model.Models
 {
@@ -20,6 +21,7 @@ namespace Pacman.Model.Models
         public DirectionEnum CurrentDirection { get; set; } = DirectionEnum.None;
 
         // property for desired direction, updates when a key is pressed
+        public Queue DesiredDirectionsQueue { get; set; } = new Queue();
         public DirectionEnum DesiredDirection { get; set; } = DirectionEnum.None;
         public PacmanPlayer(int intialPositionX, int initialPositionY)
         {

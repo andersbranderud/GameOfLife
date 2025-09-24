@@ -47,12 +47,12 @@ namespace Pacman.Model
             }
             var (currentX, currentY) = (pacman.CurrentPositionX, pacman.CurrentPositionY);
             var currentDirection = pacman.CurrentDirection;
-            var desiredDirection = pacman.DesiredDirection;
+            Enums.DirectionEnum? desiredDirection = GameControlHelper.GetNextDirectionInQueue(pacman);
 
             // New direction has been given by user input whilst sleeping
-            if (currentDirection != desiredDirection)
+            if (desiredDirection != null && currentDirection != desiredDirection)
             {
-                pacman.CurrentDirection = desiredDirection;
+                pacman.CurrentDirection = desiredDirection.Value;
             }
 
             pacman.SetLastPosition(currentX, currentY);

@@ -1,4 +1,5 @@
-﻿using Pacman.Model.Models;
+﻿using Pacman.Model.Enums;
+using Pacman.Model.Models;
 using System;
 
 namespace Pacman.Model
@@ -10,21 +11,36 @@ namespace Pacman.Model
             switch (key)
             {
                 case ConsoleKey.UpArrow:
-                    pacman.DesiredDirection = Enums.DirectionEnum.Up;
+                    EnqueueItem(pacman, DirectionEnum.Up);
                     break;
                 case ConsoleKey.DownArrow:
-                    pacman.DesiredDirection = Enums.DirectionEnum.Down;
+                    EnqueueItem(pacman, DirectionEnum.Down);
                     break;
                 case ConsoleKey.LeftArrow:
-                    pacman.DesiredDirection = Enums.DirectionEnum.Left;
+                    EnqueueItem(pacman, DirectionEnum.Left);
                     break;
                 case ConsoleKey.RightArrow:
-                    pacman.DesiredDirection = Enums.DirectionEnum.Right;
+                    EnqueueItem(pacman, DirectionEnum.Right);
                     break;
                 default:
                     // Ignore other keys
                     break;
             }
+        }
+
+        public static DirectionEnum? GetNextDirectionInQueue(PacmanPlayer player)
+        {
+            if (player.DesiredDirectionsQueue.Count == 0) {
+                return null;
+            }
+
+            var desiredDirection = player.DesiredDirectionsQueue.Dequeue();
+            return (DirectionEnum)desiredDirection;
+        }
+
+        private static void EnqueueItem(PacmanPlayer pacman, DirectionEnum direction)
+        {
+            pacman.DesiredDirectionsQueue.Enqueue(direction);
         }
     }
 }
