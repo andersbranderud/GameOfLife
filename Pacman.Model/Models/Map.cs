@@ -86,54 +86,60 @@ namespace Pacman.Model.Models
         {
             var currentX = pacman.CurrentPositionX;
             var currentY = pacman.CurrentPositionY;
+            var originalX = currentX;
+            var originalY = currentY;
 
             switch (pacman.CurrentDirection)
             {
                 case DirectionEnum.Up:
+                    if (currentY - 1 < 0)
+                    {
+                        currentY = NrOfRows;
+                    }
+
                     if (IsValidPosition(currentX, currentY - 1))
                     {
-                        if (currentY -1 < 0)
-                        {
-                            currentY = NrOfRows;
-                        }
                         return (currentX, currentY - 1);
                     }
                     break;
                 case DirectionEnum.Down:
+                    if (currentY + 1 >= NrOfRows)
+                    {
+                        currentY = -1;
+                    }
+
                     if (IsValidPosition(currentX, currentY + 1))
                     {
-                        if (currentY + 1 >= NrOfRows)
-                        {
-                            currentY = -1;
-                        }
                         return (currentX, currentY + 1);
                     }
                     break;
                 case DirectionEnum.Left:
+                    if (currentX - 1 < 0)
+                    {
+                        currentX = NrOfColumns;
+                    }
+
                     if (IsValidPosition(currentX - 1, currentY))
                     {
-                        if (currentX - 1 < 0)
-                        {
-                            currentX = NrOfColumns;
-                        }
                         return (currentX - 1, currentY);
                     }
                     break;
                 case DirectionEnum.Right:
+                    if (currentX + 1 >= NrOfColumns)
+                    {
+                        currentX = -1;
+                    }
+
                     if (IsValidPosition(currentX + 1, currentY))
                     {
-                        if (currentX + 1 >= NrOfColumns)
-                        {
-                            currentX = -1;
-                        }
                         return (currentX + 1, currentY);
                     }
                     break;
                 default:
                     return (currentX, currentY); // No movement if direction is None
             }
-            // Return current position if movement is invalid
-            return (currentX, currentY); 
+            // Return original position if movement is invalid
+            return (originalX, originalY); 
         }
 
         internal bool HasRemainingDots()

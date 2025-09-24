@@ -16,9 +16,14 @@ namespace Pacman.Model.Tests
         private static char[,] CreateGrid(int rows, int cols, char fill)
         {
             var grid = new char[rows, cols];
+
             for (int r = 0; r < rows; r++)
+            {
                 for (int c = 0; c < cols; c++)
+                {
                     grid[r, c] = fill;
+                }
+            }
             return grid;
         }
 
