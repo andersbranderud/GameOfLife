@@ -35,10 +35,10 @@ namespace GameOfLife.Tests
 
             Assert.Equal(width, result.GetLength(0));
             Assert.Equal(height, result.GetLength(1));
-            Assert.Equal('0', result[0, 0]);
-            Assert.Equal('1', result[0, 1]);
-            Assert.Equal('1', result[1, 0]);
-            Assert.Equal('0', result[1, 1]);
+            Assert.Equal(0, result[0, 0]);
+            Assert.Equal(1, result[0, 1]);
+            Assert.Equal(1, result[1, 0]);
+            Assert.Equal(0, result[1, 1]);
         }
 
         [Fact]
@@ -58,33 +58,22 @@ namespace GameOfLife.Tests
             string pattern = "01a0";
             Assert.Throws<ArgumentException>(() => MapUtility.GenerateWorld(pattern, width, height));
         }
-
-        [Theory]
-        [InlineData(0, 2, "01")]
-        [InlineData(2, 0, "01")]
-        [InlineData(-1, 2, "01")]
-        [InlineData(2, -1, "01")]
-        public void GenerateWorld_WithPatternAndInvalidDimensions_ThrowsArgumentException(int width, int height, string pattern)
-        {
-            string validPattern = new string('0', Math.Max(1, width * height));
-            Assert.Throws<ArgumentException>(() => MapUtility.GenerateWorld(validPattern, width, height));
-        }
-
+        
         //Test for GenerateWorldBasedOnPattern
         [Fact]
         public void GenerateWorldBasedOnPattern_WithGliderPattern_ReturnsCorrectArray()
-        {
+        {   
             int[,] result = MapUtility.GenerateWorldBasedOnPattern("glider");
             Assert.Equal(5, result.GetLength(0));
             Assert.Equal(5, result.GetLength(1));
         
             VerifyGrid(result, new int[,]
             {
-                {'0','1','0','0','0'},
-                {'0','0','1','0','0'},
-                {'1','1','1','0','0'},
-                {'0','0','0','0','0'},
-                {'0','0','0','0','0'}
+                {0,1,0,0,0},
+                {0,0,1,0,0},
+                {1,1,1,0,0},
+                {0,0,0,0,0},
+                {0,0,0,0,0}
             });
         }
 
@@ -98,6 +87,16 @@ namespace GameOfLife.Tests
                 }
             }
 
+        }
+        [Theory]
+        [InlineData(0, 2, "01")]
+        [InlineData(2, 0, "01")]
+        [InlineData(-1, 2, "01")]
+        [InlineData(2, -1, "01")]
+        public void GenerateWorld_WithPatternAndInvalidDimensions_ThrowsArgumentException(int width, int height, string pattern)
+        {
+            // Use the provided pattern argument for clarity and to match the InlineData
+            Assert.Throws<ArgumentException>(() => MapUtility.GenerateWorld(pattern, width, height));
         }
     }
 }
