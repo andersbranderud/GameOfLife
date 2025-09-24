@@ -9,12 +9,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Maps\3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Maps\1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
-	 <ItemGroup>
-		 <InternalsVisibleTo Include="Pacman.Tests, Pacman.ConsoleApp" />
-	 </ItemGroup>
+  <ItemGroup>
+	 <InternalsVisibleTo Include="Pacman.ConsoleApp" />
+	<InternalsVisibleTo Include="Pacman.Tests" />
+   </ItemGroup>
+
 
 </Project>

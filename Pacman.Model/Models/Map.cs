@@ -40,7 +40,7 @@ namespace Pacman.Model.Models
         }
         public bool IsValidPosition(int x, int y)
         {
-            return x >= 0 && x < _nrOfColumns && y >= 0 && y < _nrOfRows && !_wallPositions.Contains((y, x));
+            return !_wallPositions.Contains((y, x));
         }
 
         /// <summary>
@@ -91,19 +91,43 @@ namespace Pacman.Model.Models
             {
                 case DirectionEnum.Up:
                     if (IsValidPosition(currentX, currentY - 1))
+                    {
+                        if (currentY -1 < 0)
+                        {
+                            currentY = NrOfRows;
+                        }
                         return (currentX, currentY - 1);
+                    }
                     break;
                 case DirectionEnum.Down:
                     if (IsValidPosition(currentX, currentY + 1))
+                    {
+                        if (currentY + 1 >= NrOfRows)
+                        {
+                            currentY = -1;
+                        }
                         return (currentX, currentY + 1);
+                    }
                     break;
                 case DirectionEnum.Left:
                     if (IsValidPosition(currentX - 1, currentY))
+                    {
+                        if (currentX - 1 < 0)
+                        {
+                            currentX = NrOfColumns;
+                        }
                         return (currentX - 1, currentY);
+                    }
                     break;
                 case DirectionEnum.Right:
                     if (IsValidPosition(currentX + 1, currentY))
+                    {
+                        if (currentX + 1 >= NrOfColumns)
+                        {
+                            currentX = -1;
+                        }
                         return (currentX + 1, currentY);
+                    }
                     break;
                 default:
                     return (currentX, currentY); // No movement if direction is None

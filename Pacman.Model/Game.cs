@@ -7,6 +7,7 @@ namespace Pacman.Model
     {
         Map _currentMap = null;
         int currentMapNr = 1;
+        int TotalNrOfMaps = 3;
         int DefaultNrOfRows = 5;
 
         private PacmanPlayer pacman;
@@ -65,8 +66,20 @@ namespace Pacman.Model
 
             if (!hasRemainingDots)
             {
-                Console.Write("Congratulations! You completed this map!");
-                return true;
+
+                if (currentMapNr == TotalNrOfMaps)
+                {
+                    Console.Write("Congratulations! You completed all maps!");
+                    return true;
+                }
+                else
+                {
+                    Console.Write($"Congratulations! You completed map nr. {currentMapNr} out of {TotalNrOfMaps}! Loading next map.");
+                    _currentMap = null;
+                    currentMapNr++;
+                    InitGame();
+                    return false;
+                }    
             }
 
             return false;
