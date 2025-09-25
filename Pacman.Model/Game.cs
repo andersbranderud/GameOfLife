@@ -84,7 +84,7 @@ namespace Pacman.Model
 
                 if (_currentMapNr == TotalNrOfMaps)
                 {
-                    Console.Write("\nCongratulations! You completed all maps!");
+                    Console.Write("\nCongratulations! You completed all maps!\n");
                     return true;
                 }
                 else

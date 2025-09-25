@@ -14,7 +14,7 @@ namespace Pacman.ConsoleApp
             var game = new Game();
             Console.WriteLine("Hello and welcome to Pacman!\n");
             Console.WriteLine("Use the arrow keys to control the direction that Pacman is moving. " +
-                "You can press several consecutive keys, and they will be put in a queue and ran in order. Any potential direction change takes place at the next tick.\n");
+                "\nYou can press several consecutive keys, and they will be put in a queue and ran in order. \nAny potential direction change takes place at the next tick.\n");
 
             // Wait
             Console.WriteLine("Press a key to start the game.");
