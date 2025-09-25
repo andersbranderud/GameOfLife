@@ -81,37 +81,6 @@ namespace GameOfLife.Model
                 }
             }
         }
-
-        // First fill the inputGrid with 0's, until we reach position of startIndex, then fill the worldArray with content of inputGrid
-        // then fill remaining with 0's
-        private static int PopulateArrayBasedOnInputGridWithStartIndex(string inputGrid, int width, int height, int[,] worldArray, int startIndex)
-        {
-            int currentIndex = 0;
-            var endIndexPatternInInputGrid = inputGrid.Length + startIndex;
-
-            foreach (var x in Enumerable.Range(0, width))
-            {
-                foreach (var y in Enumerable.Range(0, height))
-                {
-                    int currentValue = StateHelper.DeadCell;
-
-                    if (currentIndex >= startIndex | currentIndex < endIndexPatternInInputGrid )
-                    {
-                        var isWithinInputGridBoundaries = currentIndex < inputGrid.Length;
-                        if (isWithinInputGridBoundaries)
-                        {
-                            currentValue = (int)char.GetNumericValue(inputGrid[currentIndex]);
-                        }
-                    }
-
-                    worldArray[x, y] = currentValue;
-                    currentIndex++;
-                }
-            }
-
-            return currentIndex;
-        }
-
         /// <summary>
         /// Generates an initial state based on a pattern and returns it.
         /// </summary>

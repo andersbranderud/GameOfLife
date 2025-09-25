@@ -7,6 +7,7 @@ namespace Pacman.ConsoleApp
     class Program
     {
         private static bool _run = true;
+        private const int TickTime = 500;
 
         static void Main(string[] args)
         {
@@ -49,7 +50,7 @@ namespace Pacman.ConsoleApp
                     game.CheckUserInputAndUpdateDirection(keyInfo.Key);
                 }
 
-                Thread.Sleep(500);
+                Thread.Sleep(TickTime);
                 tickCount++;
                 currentStateNr++;
             }

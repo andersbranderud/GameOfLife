@@ -1,13 +1,16 @@
 Game of Life
-total 1h 55 minutes
+Total: 1h 55min
 
 AI usage:
-Some auto-code gen for input validations
-Unit tests several
-GetValuesOfNeighbours -- to autofill 8 directions based on my first example.
-
+Some auto-code gen for input validations.
+Auto-complete of a couple of methods, including GetValuesOfNeighbours -- to autofill 8 directions based on my first example.
+Several of the unit tests.
 
 Pacman
-2h
-AI: MapUtility read from file;Tests; auto complete of e.g. CheckUserInputAndUpdateDirection
-14.16
+2h 35m
+Extra as I needed to complete it.
+
+AI usage: 
+MapUtility read from file.
+Auto-complete of a couple of methods, e.g. CheckUserInputAndUpdateDirectionl.
+Most of the unit tests as not enough time otherwise.
