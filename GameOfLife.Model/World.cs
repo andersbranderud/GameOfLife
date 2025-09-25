@@ -4,6 +4,7 @@
     {
         private int[,] currentState = null;
         private bool _replaceZerosWithBlanks = false;
+        private bool _replacesOnesWithSymbol = true;
 
         public World()
         { 
@@ -31,7 +32,7 @@
         // Runs every tick
         public void Render()
         {
-            MapUtility.PrintOutCurrentState(currentState, _replaceZerosWithBlanks);
+            MapUtility.PrintOutCurrentState(currentState, _replaceZerosWithBlanks, _replacesOnesWithSymbol);
             currentState = StateHelper.GenerateNewGameOfLifeState(currentState);
         }
     }

@@ -100,7 +100,7 @@ namespace GameOfLife.Model
 
         }
 
-        internal static void PrintOutCurrentState(int[,] currentState, bool replaceZerosWithBlankSpace = false)
+        internal static void PrintOutCurrentState(int[,] currentState, bool replaceZerosWithBlankSpace = false, bool replaceOnesWithStar = false)
         {
             var width = currentState.GetLength(0);
             var height = currentState.GetLength(1);
@@ -112,9 +112,13 @@ namespace GameOfLife.Model
 
                 if (replaceZerosWithBlankSpace)
                 {
-                    rowString = rowString.Replace('0', ' ');
+                    rowString = rowString.Replace('0', StateConstants.PrintOutDeadSymbol);
                 }
-                
+                if (replaceOnesWithStar)
+                {
+                    rowString = rowString.Replace('1', StateConstants.PrintOutAliveSymbol);
+                }
+
                 Console.WriteLine($"{rowString}");
             }
         }

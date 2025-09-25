@@ -51,9 +51,11 @@ namespace GameOfLife.ConsoleApp
                 }
             }
 
-            // Optional: prompt for initial pattern
-            Console.Write("Enter initial pattern (Press enter for random pattern).\n " +
-                "Example valid input: 0110 (for 2x2 grid); glider (defaults to 5x5 grid) \n");
+            Console.Write("\nEnter initial pattern: \n" +
+                "Usage examples: \n" +
+                "* Press enter for random pattern.\n" +
+                "* 0110 (For 2x2 grid.)\n" +
+                "* glider (Defaults to 5x5 grid.) \n");
 
             string pattern = Console.ReadLine();
 
@@ -68,7 +70,7 @@ namespace GameOfLife.ConsoleApp
             {
                 Console.Clear();
                 world.Render();                
-                Console.Write($"\nCurrent state {currentStateNr}\n\n");
+                Console.Write($"\nCurrent state: {currentStateNr}\n\n");
                 Thread.Sleep(1000);
                 tickCount++;
                 currentStateNr++;
