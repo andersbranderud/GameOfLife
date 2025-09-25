@@ -84,12 +84,12 @@ namespace Pacman.Model
 
                 if (_currentMapNr == TotalNrOfMaps)
                 {
-                    Console.Write("Congratulations! You completed all maps!");
+                    Console.Write("\nCongratulations! You completed all maps!");
                     return true;
                 }
                 else
                 {
-                    Console.Write($"Congratulations! You completed map nr. {_currentMapNr} out of {TotalNrOfMaps}! Press a key to load next map.");
+                    Console.Write($"\nCongratulations! You completed map nr. {_currentMapNr} out of {TotalNrOfMaps}! Press a key to load next map.");
                     Console.ReadKey();
                     _currentMap = null;
                     _currentMapNr++;

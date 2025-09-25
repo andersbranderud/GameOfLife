@@ -46,13 +46,13 @@ namespace GameOfLife.Model
             }
 
             int[,] worldArray = new int[width, height];
-            int currentIndex = 0;
             
             var totalNumberOfCells = width * height;
-            
-            if (inputGrid.Length != totalNumberOfCells)
+            var totalLengthGrid = inputGrid.Length;
+
+            if (totalLengthGrid != totalNumberOfCells)
             {
-                throw new ArgumentException($"Pattern length {inputGrid.Length} does not match the total number of cells {totalNumberOfCells}.");
+                throw new ArgumentException($"Pattern length {totalLengthGrid} does not match the total number of cells {totalNumberOfCells}.");
             }
 
             // Validate only 0 and 1 in pattern via reg exp
@@ -63,6 +63,14 @@ namespace GameOfLife.Model
                 throw new ArgumentException("Pattern must only contain '0' and '1' characters.");
             }
 
+            PopulateArrayBasedOnInputGrid(inputGrid, width, height, worldArray);
+
+            return worldArray;
+        }
+
+        private static void PopulateArrayBasedOnInputGrid(string inputGrid, int width, int height, int[,] worldArray)
+        {
+            int currentIndex = 0;
             foreach (var x in Enumerable.Range(0, width))
             {
                 foreach (var y in Enumerable.Range(0, height))
@@ -72,8 +80,36 @@ namespace GameOfLife.Model
                     currentIndex++;
                 }
             }
+        }
 
-            return worldArray;
+        // First fill the inputGrid with 0's, until we reach position of startIndex, then fill the worldArray with content of inputGrid
+        // then fill remaining with 0's
+        private static int PopulateArrayBasedOnInputGridWithStartIndex(string inputGrid, int width, int height, int[,] worldArray, int startIndex)
+        {
+            int currentIndex = 0;
+            var endIndexPatternInInputGrid = inputGrid.Length + startIndex;
+
+            foreach (var x in Enumerable.Range(0, width))
+            {
+                foreach (var y in Enumerable.Range(0, height))
+                {
+                    int currentValue = StateHelper.DeadCell;
+
+                    if (currentIndex >= startIndex | currentIndex < endIndexPatternInInputGrid )
+                    {
+                        var isWithinInputGridBoundaries = currentIndex < inputGrid.Length;
+                        if (isWithinInputGridBoundaries)
+                        {
+                            currentValue = (int)char.GetNumericValue(inputGrid[currentIndex]);
+                        }
+                    }
+
+                    worldArray[x, y] = currentValue;
+                    currentIndex++;
+                }
+            }
+
+            return currentIndex;
         }
 
         /// <summary>
@@ -95,7 +131,7 @@ namespace GameOfLife.Model
 
         }
 
-        internal static void PrintOutCurrentState(int[,] currentState)
+        internal static void PrintOutCurrentState(int[,] currentState, bool replaceZerosWithBlankSpace = false)
         {
             var width = currentState.GetLength(0);
             var height = currentState.GetLength(1);
@@ -104,7 +140,12 @@ namespace GameOfLife.Model
             {
                 int[] allChars = ArrayUtility.GetRow(currentState, x);
                 string rowString = string.Join(" ", allChars);
-                rowString = rowString.Replace('0', ' ');
+
+                if (replaceZerosWithBlankSpace)
+                {
+                    rowString = rowString.Replace('0', ' ');
+                }
+                
                 Console.WriteLine($"{rowString}");
             }
         }
