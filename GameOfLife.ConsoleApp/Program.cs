@@ -9,7 +9,6 @@ namespace GameOfLife.ConsoleApp
         private static bool _run = true;
         private const int DefaultWidth = 10;
         private const int DefaultLength = 10;
-        private const int DefaultStartIndex = 0;
         private const bool ReplaceZerosWithBlanks = true;
         static void Main(string[] args)
         {
